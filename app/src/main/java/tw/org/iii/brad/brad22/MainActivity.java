@@ -10,6 +10,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -71,8 +72,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 321 && resultCode == RESULT_OK){
+            Log.v("brad", "debug");
+            String code = data.getStringExtra("code");
+            Log.v("brad", "==> " +code);
             webView.loadUrl(
-                    String.format("javascript:showCode('%s')", data.getStringExtra("code")));
+                    String.format("javascript:showCode('%s')", code));
         }
     }
 }

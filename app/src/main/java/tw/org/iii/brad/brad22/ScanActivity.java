@@ -17,10 +17,13 @@ public class ScanActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mScannerView = new ZXingScannerView(this);   // Programmatically initialize the scanner view
+//        mScannerView = new ZXingScannerView(this);   // Programmatically initialize the scanner view
+//        mScannerView.setAspectTolerance(0.5f);
+//        setContentView(mScannerView);
+
+        setContentView(R.layout.activity_scan);
+        mScannerView = findViewById(R.id.scanner);
         mScannerView.setAspectTolerance(0.5f);
-        setContentView(mScannerView);
-        //setContentView(R.layout.activity_scan);
     }
 
     @Override
@@ -39,7 +42,7 @@ public class ScanActivity extends AppCompatActivity
     @Override
     public void handleResult(Result rawResult) {
         // Do something with the result here
-        //Log.v("brad", rawResult.getText()); // Prints scan results
+        Log.v("brad", rawResult.getText()); // Prints scan results
         //Log.v("brad", rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
 
         // If you would like to resume scanning, call this method below:
